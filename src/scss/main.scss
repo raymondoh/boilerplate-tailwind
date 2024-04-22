@@ -1,0 +1,337 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+//CONFIG FILE = purge, package.json= NODE_ENV=production
+
+// @apply for btn, headline or form //
+
+// base - targets html tags
+// components - for container, max-width
+// for utilities eg pt, mx, shadow grid-col-3
+// use space-y-? when margin top or bottom in a div are all the same in parent container
+
+/*
+BTN ELEMENT = + increase per screen size sm, md etc
+primary btn - shadow and transition. secondary no transition or shadow
+inline-block
+px-5
+py-4
+shadow-lg - on primary btn only?
+bg-color
+text-color
+rounded-lg
+text-sm
+uppercase + tracking-widest
+font-semibold
+//
+transition
+transform
+//hover
+hover: bg-color-lighter
+hover:-translate-y-0.5
+//focus
+focus:outline-none
+focus:ring
+focus:ring-offset-2
+focus:ring-indigo-500// same color as btn
+focus-ring-opacity-50
+//active
+active:bg-red-500 - darker than bg-color
+//BTN ON COLORED BACKGROUND
+bg--pink-300
+px-8 py-3 rounded-full bg-white text-pink-600 font-semibold shadow-xl shadow-pink-600/20
+
+CARD
+.card-container
+.card-image
+.card-content-wrapper
+.card-title
+
+IMAGES
+object-center
+sm:h-64
+sm:w-full
+sm:object-cover
+shadow-lg
+
+
+//VIDEO EMBED
+w-full spect-ratio
+
+//image
+h-48 w-full object-cover
+OR
+aspect-square w-full object-cover
+OR
+aspect-[3/1] w-full object-cover
+
+
+RESPONSIVE
+max-w-?-md + mx-auto on container and increase per screen size eg sm:max-w-lg
+
+
+@layer base {
+  html {
+    font-family: "Quicksand", sans-serif;
+  }
+  body {
+    @apply overscroll-y-none  antialiased selection:bg-sky-300 selection:text-white;
+  }
+  h1 {
+    //@apply mb-2 text-6xl font-bold;
+  }
+  h2 {
+    //@apply mb-1 text-5xl font-bold;
+  }
+  h3 {
+    //@apply text-4xl font-bold pb-3;
+  }
+  h4 {
+    //@apply text-3xl font-bold pb-3;
+  }
+  h5 {
+    //@apply text-2xl font-bold pb-3;
+  }
+  h6 {
+    //@apply text-xl font-bold pb-3;
+  }
+  a {
+    //@apply text-blue-500 underline underline-offset-4 transition hover:text-green-500;
+  }
+}
+
+
+@layer components {
+  .btn {
+    @apply inline-block rounded-lg px-5 py-3 text-sm font-semibold uppercase tracking-wider focus:outline-none focus:ring focus:ring-offset-2 sm:text-base;
+  }
+  .btn-primary {
+    @apply bg-indigo-500 text-white hover:bg-indigo-400 focus:ring-indigo-500 focus:ring-opacity-50 active:bg-indigo-600;
+  }
+  .btn-secondary {
+    @apply bg-gray-300 text-gray-800 hover:bg-gray-200 focus:ring-gray-300 focus:ring-opacity-50 active:bg-gray-400;
+  }
+}
+@layer components {
+  .btn {
+    //@apply inline-block rounded-lg px-5 py-3 text-sm font-semibold uppercase tracking-wider focus:outline-none focus:ring focus:ring-offset-2 sm:text-base;
+  }
+  .btn-primary {
+    //@apply bg-indigo-500 text-white hover:bg-indigo-400 focus:ring-indigo-500 focus:ring-opacity-50 active:bg-indigo-600;
+  }
+  .btn-secondary {
+    //@apply bg-gray-300 text-gray-800 hover:bg-gray-200 focus:ring-gray-300 focus:ring-opacity-50 active:bg-gray-400;
+  }
+}
+.btn-secondary {
+  //@apply border border-red-400 text-blue-500;
+}
+input,
+select {
+  //@apply mb-2 rounded-lg border  p-2 text-green-700 outline-none placeholder:italic;
+}
+select {
+  //@apply px-10;
+}
+input[type="text"] {
+  //@apply border-green-500;
+}
+input[type="checkbox"] {
+  //@apply p-2 accent-purple-500;
+}
+label {
+  // @apply ml-2 text-sm font-medium text-purple-500;
+}
+
+
+
+
+
+
+
+
+//style="background-image: url('./images/logo-1.svg'); background-size: cover;  background-position: center;"
+
+// footer {
+//   position: relative;
+//   background-color: #333;
+//   color: #fff;
+// }
+
+// footer::before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   z-index: -1;
+//   background-image: url("../images/logo-1.svg");
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+
+@layer base {
+  select {
+    @apply form-input w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+  }
+  [type="checkbox"] {
+    @apply form-checkbox h-5 w-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500;
+  }
+  [type="input"],
+  [type="radio"] {
+    @apply form-input h-5 w-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500;
+  }
+  [type="text"],
+  [type="email"],
+  [type="password"] {
+    @apply form-input w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+  }
+}
+
+/* HAMBURGER MENU */
+#hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s ease;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  background: #fff !important;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  transform: rotate(0);
+  transition: all 0.5s ease;
+}
+
+.hamburger-top {
+  top: 4px; /* Adjusted position */
+}
+
+.hamburger-middle {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger-bottom {
+  bottom: 4px; /* Adjusted position */
+}
+
+// /* TOGGLE STYLES WHEN THE HAMBURGER MENU IS OPEN  */
+.open .hamburger-top {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.open .hamburger-middle {
+  opacity: 0;
+}
+.open .hamburger-bottom {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+// /* HOVER & ACTIVE STATE  */
+.active {
+  color: pink; /* Change to whatever color you'd like */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+// .hover {
+//   color: green !important;
+// }
+
+// /* SLIDE DOWN ANIMATION  */
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+    background-color: transparent;
+  }
+  100% {
+    transform: translateY(0);
+    background-color: #1f2937;
+    //background-color: red;
+  }
+}
+
+.slide-down {
+  animation: slide-down 0.5s ease-in-out forwards;
+}
+
+// /* SLIDE UP ANIMATION  */
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.slide-up {
+  animation: slide-up 0.5s ease-in-out forwards;
+}
+
+#mobile-nav ul {
+  @apply duration-200 ease-in-out;
+  transition-property: background-color;
+}
+
+/* SLIDE UP LINKS  */
+@keyframes slide-up-links {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-slide-up-links {
+  animation: slide-up-links 0.5s ease-in-out forwards;
+}
+#mobile-nav ul li {
+  animation: slide-up-links 1.5s ease-in-out forwards;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Your existing CSS styles */
+/* Add these new classes */
+.submenu-mobile-open {
+  position: static !important;
+}
+.submenu-mobile-open > ul {
+  position: relative !important;
+}
+
+.submenu-hidden {
+  display: none !important;
+}
+
+/* When hovering over either the a tag or the li element */
+// li.group:hover .arrow-down,
+// li.group:hover .arrow-up {
+//   display: none;
+// }
+
+// li.group:hover .arrow-up,
+// li.group .arrow-down {
+//   display: inline;
+// }
